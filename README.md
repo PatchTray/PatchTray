@@ -40,17 +40,25 @@ This is PatchTray's public release and community repository. The application sou
 <details>
 <summary><strong>More product screenshots</strong></summary>
 
+### First launch
+
+<img src="assets/patchtray-first-run.png" alt="PatchTray first-launch configuration screen" width="900">
+
+### Guided ASIO setup
+
+<img src="assets/patchtray-setup.png" alt="PatchTray guided setup selecting an ASIO audio driver" width="900">
+
+### Interactive routing tutorial
+
+<img src="assets/patchtray-tutorial.png" alt="PatchTray routing canvas with the interactive tutorial coach" width="900">
+
 ### ASIO port configuration
 
-<img src="assets/patchtray-ports.png" alt="PatchTray ASIO input port configuration" width="760">
+<img src="assets/patchtray-ports.png" alt="PatchTray ASIO input channel configuration" width="900">
 
-### Application settings
+### License management and recovery
 
-<img src="assets/patchtray-settings.png" alt="PatchTray audio device settings" width="760">
-
-### Live telemetry
-
-<img src="assets/patchtray-telemetry.png" alt="PatchTray master meters and telemetry" width="760">
+<img src="assets/patchtray-license.png" alt="PatchTray Pro license status and license recovery controls" width="900">
 
 </details>
 
