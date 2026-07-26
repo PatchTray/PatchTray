@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Purchase, licensing, refund, or private support
+    url: https://patchtray.io/support
+    about: Use private support for anything involving an order, license, email address, or account.
+  - name: PatchTray guide
+    url: https://patchtray.io/guide
+    about: Check setup and usage guidance before filing a bug.
+  - name: Security report
+    url: https://patchtray.io/support
+    about: Report vulnerabilities privately; never disclose them in a public issue.

@@ -1,0 +1,56 @@
+name: Feature request
+description: Suggest an improvement to PatchTray's workflow or capabilities.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the problem and desired outcome rather than only a specific implementation. Do not include license, payment, account, or other private information.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched open and closed issues for a similar request.
+          required: true
+        - label: This request does not contain private or account-specific information.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Explain the limitation or workflow friction you encounter.
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe what you would like to be able to accomplish.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Example use case
+      description: Give a concrete audio-routing or PatchTray workflow where this would help.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Explain any workaround you use today or another approach worth considering.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context or mockups
+      description: Add safe screenshots, sketches, or related examples if useful.
