@@ -1,0 +1,97 @@
+name: Bug report
+description: Report a reproducible problem in the latest PatchTray release.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem. Do not include license keys, recovery codes, payment details, purchase emails, or raw device identifiers.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I am using the latest PatchTray release.
+          required: true
+        - label: I searched open and closed issues for the same problem.
+          required: true
+        - label: I removed license, payment, account, and other private information.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and its impact.
+      placeholder: PatchTray…
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide the smallest repeatable sequence that triggers the problem.
+      placeholder: |
+        1. Open…
+        2. Select…
+        3. Observe…
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead?
+    validations:
+      required: true
+
+  - type: input
+    id: patchtray-version
+    attributes:
+      label: PatchTray version
+      placeholder: 0.4.0
+    validations:
+      required: true
+
+  - type: input
+    id: windows-version
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+
+  - type: input
+    id: asio
+    attributes:
+      label: ASIO driver and audio setup
+      description: Name the driver and relevant mixer or interface.
+      placeholder: Voicemeeter Potato Insert Virtual ASIO
+    validations:
+      required: true
+
+  - type: input
+    id: plugin
+    attributes:
+      label: Affected VST3 plugin
+      description: Include plugin name and version, or write “none.”
+      placeholder: Plugin name 1.2.3
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant logs or screenshots
+      description: Drag files here after removing secrets, license information, email addresses, and other personal data.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add anything else that helps distinguish or reproduce the problem.
