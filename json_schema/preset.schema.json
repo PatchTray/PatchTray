@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/preset.schema.json",
+  "title": "PatchTray Preset Graph",
+  "description": "Routing graph + plugin state document stored at %APPDATA%/io.patchtray.desktop/presets/<name>.json. Engine fields (path, state, channel counts, latency) come from C++ capture; UI fields (layout, portType, param grid) are merged from the frontend.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["nodes", "connections"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "JSON Schema URL for editor validation (optional at runtime; written by the app on save)."
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Graph nodes (ASIO I/O + VST3 plugins).",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "connections": {
+      "type": "array",
+      "description": "Per-channel audio routes. A stereo UI edge expands to two connections (channels 0 and 1).",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/$defs/connection"
+      }
+    },
+    "latency_samples": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total reported graph latency in samples. Present when saved via engine merge path; may be omitted on UI-fallback saves."
+    }
+  },
+  "$defs": {
+    "nodeType": {
+      "type": "string",
+      "enum": ["input", "output", "plugin"],
+      "description": "Node role in the routing graph."
+    },
+    "portType": {
+      "type": "string",
+      "enum": ["mono", "stereo"],
+      "description": "UI port width for I/O nodes (UI-only; merged onto engine graph)."
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique node id (e.g. \"asio-input\", \"asio-output\", \"plugin-<timestamp>\")."
+        },
+        "type": {
+          "$ref": "#/$defs/nodeType"
+        },
+        "path": {
+          "type": "string",
+          "description": "Filesystem path to the VST3 bundle for plugin nodes. Empty for I/O nodes."
+        },
+        "state": {
+          "type": "string",
+          "description": "Base64-encoded VST3 processor/controller state blob (engine capture). Empty when unavailable."
+        },
+        "bypassed": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the node is bypassed in the audio graph."
+        },
+        "num_inputs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Input channel count. Input nodes typically use 0; plugins/I/O use selected channel counts."
+        },
+        "num_outputs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Output channel count. Output nodes typically use 0; plugins/I/O use selected channel counts."
+        },
+        "x": {
+          "type": "number",
+          "description": "Canvas X position (UI layout)."
+        },
+        "y": {
+          "type": "number",
+          "description": "Canvas Y position (UI layout)."
+        },
+        "portType": {
+          "$ref": "#/$defs/portType"
+        },
+        "selectedChannels": {
+          "type": "array",
+          "description": "Hardware channel indices selected for ASIO I/O nodes (UI-only).",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "examples": [[0, 1]]
+        },
+        "paramPages": {
+          "type": "array",
+          "description": "Phase 7 page-aware parameter slot customizations. Index = page; each entry is a 6-slot array of param IDs (-1 = empty), or null for auto-populate.",
+          "items": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "minItems": 6,
+                "maxItems": 6
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "examples": [[[101, 202, -1, -1, -1, -1], null, [303, -1, -1, -1, -1, -1]]]
+        },
+        "paramGrid": {
+          "type": "array",
+          "description": "Deprecated: legacy flat page-0 slot IDs (0/-1 = empty). Accepted on load; new saves use paramPages.",
+          "items": {
+            "type": "integer"
+          },
+          "examples": [[101, 202, 0, 0, 0, 0]]
+        },
+        "pageCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Phase C user-defined minimum parameter page count. totalPages = max(ceil(eligibleParams/6), pageCount). Absent → pure derived pagination."
+        },
+        "pluginLabel": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Phase D plugin display name (UI-only). Initialized from the plugin library name on create; merged from the frontend UI graph. Absent on older presets → frontend falls back to path stem or \"VST3 Plugin\"."
+        },
+        "currentPage": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Phase 7 zero-based parameter page index (UI-only)."
+        },
+        "collapsed": {
+          "type": "boolean",
+          "description": "Phase 7 parameter grid collapsed state (UI-only)."
+        },
+        "configureMode": {
+          "type": "boolean",
+          "description": "Phase 7 grid configure/edit mode (UI-only)."
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "target"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Source node id (must exist in nodes[].id)."
+        },
+        "source_channel": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0,
+          "description": "Source audio channel index (0-based)."
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Target node id (must exist in nodes[].id)."
+        },
+        "target_channel": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0,
+          "description": "Target audio channel index (0-based)."
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "$schema": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/preset.schema.json",
+      "nodes": [
+        {
+          "id": "asio-input",
+          "type": "input",
+          "path": "",
+          "state": "",
+          "bypassed": false,
+          "num_inputs": 0,
+          "num_outputs": 2,
+          "x": 50,
+          "y": 180,
+          "portType": "stereo",
+          "selectedChannels": [0, 1]
+        },
+        {
+          "id": "plugin-1712345678",
+          "type": "plugin",
+          "path": "C:\\Program Files\\Common Files\\VST3\\MyPlugin.vst3",
+          "state": "",
+          "bypassed": false,
+          "num_inputs": 2,
+          "num_outputs": 2,
+          "x": 380,
+          "y": 180,
+          "portType": "stereo",
+          "pluginLabel": "My Plugin",
+          "paramPages": [[101, 202, -1, -1, -1, -1]],
+          "pageCount": 2,
+          "currentPage": 0,
+          "collapsed": false,
+          "configureMode": false
+        },
+        {
+          "id": "asio-output",
+          "type": "output",
+          "path": "",
+          "state": "",
+          "bypassed": false,
+          "num_inputs": 2,
+          "num_outputs": 0,
+          "x": 820,
+          "y": 180,
+          "portType": "stereo",
+          "selectedChannels": [0, 1]
+        }
+      ],
+      "connections": [
+        {
+          "source": "asio-input",
+          "source_channel": 0,
+          "target": "plugin-1712345678",
+          "target_channel": 0
+        },
+        {
+          "source": "asio-input",
+          "source_channel": 1,
+          "target": "plugin-1712345678",
+          "target_channel": 1
+        },
+        {
+          "source": "plugin-1712345678",
+          "source_channel": 0,
+          "target": "asio-output",
+          "target_channel": 0
+        },
+        {
+          "source": "plugin-1712345678",
+          "source_channel": 1,
+          "target": "asio-output",
+          "target_channel": 1
+        }
+      ],
+      "latency_samples": 512
+    }
+  ]
+}

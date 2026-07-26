@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/settings.schema.json",
+  "title": "PatchTray App Settings",
+  "description": "User settings document stored at %APPDATA%/io.patchtray.desktop/settings.json. Validated by the Rust backend before save; this schema is for editor tooling and documentation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["selected_device", "preferences", "plugin_directories"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "JSON Schema URL for editor validation (optional at runtime; written by the app on save)."
+    },
+    "selected_device": {
+      "type": "string",
+      "maxLength": 256,
+      "description": "Last selected ASIO driver name. Empty string means none selected.",
+      "examples": ["ASIO4ALL v2", "Voicemeeter Virtual ASIO"]
+    },
+    "preferences": {
+      "$ref": "#/$defs/preferences"
+    },
+    "plugin_directories": {
+      "type": "array",
+      "description": "VST3 scan directories. Empty list is normalized to the default Windows VST3 path on load/save.",
+      "minItems": 0,
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 512,
+        "description": "Absolute or rooted filesystem path to a VST3 directory."
+      },
+      "examples": [
+        [
+          "C:\\Program Files\\Common Files\\VST3",
+          "D:\\Plugins\\VST3"
+        ]
+      ]
+    },
+    "setup": {
+      "$ref": "#/$defs/setup",
+      "description": "First-run setup wizard gate. Optional; missing key is migrated to completed=true when the settings file already exists."
+    },
+    "tutorial": {
+      "$ref": "#/$defs/tutorial",
+      "description": "Interactive tutorial state. Optional; missing key → keeps defaults (completed: false)."
+    },
+    "active_preset": {
+      "type": "string",
+      "maxLength": 256,
+      "default": "",
+      "description": "Last selected/saved preset name. Free tier may only use this single preset when multiple files exist."
+    }
+  },
+  "$defs": {
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ui_scale",
+        "start_with_windows",
+        "minimize_to_system_tray",
+        "hardware_acceleration"
+      ],
+      "properties": {
+        "ui_scale": {
+          "type": "integer",
+          "minimum": 75,
+          "maximum": 150,
+          "multipleOf": 1,
+          "default": 100,
+          "description": "UI scale percent applied via webview zoom (settings slider uses step 5)."
+        },
+        "start_with_windows": {
+          "type": "boolean",
+          "default": false,
+          "description": "Launch PatchTray automatically when Windows starts."
+        },
+        "minimize_to_system_tray": {
+          "type": "boolean",
+          "default": true,
+          "description": "Close button hides the main window to the system tray instead of exiting."
+        },
+        "hardware_acceleration": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use GPU rendering for the node graph and cable animations."
+        }
+      }
+    },
+    "setup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed", "skipped"],
+      "properties": {
+        "completed": {
+          "type": "boolean",
+          "default": false,
+          "description": "True after the first-run setup wizard is finished or skipped. Cold install defaults to false; existing files without this key migrate to true on load."
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 timestamp when setup finished or was skipped."
+        },
+        "skipped": {
+          "type": "boolean",
+          "default": false,
+          "description": "True if the user skipped the wizard (or skip-all) rather than completing every step."
+        }
+      }
+    },
+    "tutorial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed", "skipped", "current_step"],
+      "properties": {
+        "completed": {
+          "type": "boolean",
+          "default": false,
+          "description": "True after the tutorial is completed or skipped."
+        },
+        "completed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "ISO-8601 timestamp when the tutorial was finished or skipped."
+        },
+        "skipped": {
+          "type": "boolean",
+          "default": false,
+          "description": "True if the user skipped the tutorial."
+        },
+        "current_step": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5,
+          "default": 0,
+          "description": "0 = not in progress; 1-5 = last active step"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "$schema": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/settings.schema.json",
+      "selected_device": "ASIO4ALL v2",
+      "preferences": {
+        "ui_scale": 110,
+        "start_with_windows": false,
+        "minimize_to_system_tray": true,
+        "hardware_acceleration": true
+      },
+      "plugin_directories": [
+        "C:\\Program Files\\Common Files\\VST3"
+      ],
+      "setup": {
+        "completed": true,
+        "completed_at": "2026-07-08T12:00:00Z",
+        "skipped": false
+      },
+      "tutorial": {
+        "completed": false,
+        "completed_at": null,
+        "skipped": false,
+        "current_step": 0
+      },
+      "active_preset": "Default"
+    }
+  ]
+}
