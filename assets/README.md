@@ -7,10 +7,12 @@ This directory contains the approved public media kit for PatchTray.
 | `patchtray-mark.svg` | Scalable PatchTray mark for light or dark layouts |
 | `patchtray-icon.png` | Square application icon |
 | `patchtray-pro-banner.png` | PatchTray Pro marketing artwork |
-| `patchtray-canvas.png` | Main application and routing canvas |
-| `patchtray-ports.png` | ASIO port configuration dialog |
-| `patchtray-settings.png` | Application settings dialog |
-| `patchtray-telemetry.png` | Main meters and telemetry view |
+| `patchtray-first-run.png` | First-launch configuration screen |
+| `patchtray-setup.png` | Guided ASIO driver setup |
+| `patchtray-tutorial.png` | Interactive routing tutorial |
+| `patchtray-canvas.png` | Active ASIO → VST3 → ASIO routing canvas |
+| `patchtray-ports.png` | ASIO input channel configuration |
+| `patchtray-license.png` | Pro license status and recovery controls |
 
 ## Usage
 
