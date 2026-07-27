@@ -6,6 +6,7 @@ This directory contains the approved public media kit for PatchTray.
 | --- | --- |
 | `patchtray-mark.svg` | Scalable PatchTray mark for light or dark layouts |
 | `patchtray-icon.png` | Square application icon |
+| `patchtray-banner.png` | Repository README header banner |
 | `patchtray-pro-banner.png` | PatchTray Pro marketing artwork |
 | `patchtray-first-run.png` | First-launch configuration screen |
 | `patchtray-setup.png` | Guided ASIO driver setup |

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/patchtray-pro-banner.png" alt="PatchTray Pro — visual ASIO routing and VST3 hosting" width="760">
+  <img src="assets/patchtray-banner.png" alt="PatchTray — visual ASIO routing and VST3 hosting" width="760">
 </p>
 
 <p align="center">
