@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/settings.schema.json",
+  "$id": "https://raw.githubusercontent.com/PatchTray/PatchTray/main/json_schema/settings.schema.json",
   "title": "PatchTray App Settings",
   "description": "User settings document stored at %APPDATA%/io.patchtray.desktop/settings.json. Validated by the Rust backend before save; this schema is for editor tooling and documentation.",
   "type": "object",
@@ -145,7 +145,7 @@
   },
   "examples": [
     {
-      "$schema": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/settings.schema.json",
+      "$schema": "https://raw.githubusercontent.com/PatchTray/PatchTray/main/json_schema/settings.schema.json",
       "selected_device": "ASIO4ALL v2",
       "preferences": {
         "ui_scale": 110,

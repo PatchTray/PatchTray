@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/preset.schema.json",
+  "$id": "https://raw.githubusercontent.com/PatchTray/PatchTray/main/json_schema/preset.schema.json",
   "title": "PatchTray Preset Graph",
   "description": "Routing graph + plugin state document stored at %APPDATA%/io.patchtray.desktop/presets/<name>.json. Engine fields (path, state, channel counts, latency) come from C++ capture; UI fields (layout, portType, param grid) are merged from the frontend.",
   "type": "object",
@@ -186,7 +186,7 @@
   },
   "examples": [
     {
-      "$schema": "https://raw.githubusercontent.com/CyR1en/PatchTray/main/json_schema/preset.schema.json",
+      "$schema": "https://raw.githubusercontent.com/PatchTray/PatchTray/main/json_schema/preset.schema.json",
       "nodes": [
         {
           "id": "asio-input",

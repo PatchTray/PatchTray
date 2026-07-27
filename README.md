@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://patchtray.io"><strong>Website</strong></a>
   ·
-  <a href="https://github.com/CyR1en/PatchTray/releases/latest"><strong>Download</strong></a>
+  <a href="https://github.com/PatchTray/PatchTray/releases/latest"><strong>Download</strong></a>
   ·
   <a href="https://patchtray.io/guide"><strong>Guide</strong></a>
   ·
@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/CyR1en/PatchTray/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/CyR1en/PatchTray?display_name=tag&sort=semver&color=ff6600"></a>
+  <a href="https://github.com/PatchTray/PatchTray/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/PatchTray/PatchTray?display_name=tag&sort=semver&color=ff6600"></a>
   <img alt="Platform: Windows" src="https://img.shields.io/badge/platform-Windows-55555f">
   <img alt="Format: VST3" src="https://img.shields.io/badge/plugin-VST3-55555f">
 </p>
@@ -64,7 +64,7 @@ This is PatchTray's public release and community repository. The application sou
 
 ## Download
 
-Download the newest Windows installer from [Releases](https://github.com/CyR1en/PatchTray/releases/latest).
+Download the newest Windows installer from [Releases](https://github.com/PatchTray/PatchTray/releases/latest).
 
 Each release provides:
 
@@ -87,8 +87,8 @@ PatchTray is commonly used with Voicemeeter ASIO insert routing, but other suita
 
 Use the repository's issue forms to report a reproducible bug or propose an improvement:
 
-- [Report a bug](https://github.com/CyR1en/PatchTray/issues/new?template=bug_report.yml)
-- [Request a feature](https://github.com/CyR1en/PatchTray/issues/new?template=feature_request.yml)
+- [Report a bug](https://github.com/PatchTray/PatchTray/issues/new?template=bug_report.yml)
+- [Request a feature](https://github.com/PatchTray/PatchTray/issues/new?template=feature_request.yml)
 
 Before posting, check for an existing issue and read [CONTRIBUTING.md](CONTRIBUTING.md). Never include a license key, recovery code, payment information, purchase email, raw device identifier, or another person's private data in a public issue.
 
@@ -101,7 +101,7 @@ Approved logos, application captures, and marketing artwork live in [`assets/`](
 ## Links
 
 - [PatchTray website](https://patchtray.io)
-- [Download the latest release](https://github.com/CyR1en/PatchTray/releases/latest)
+- [Download the latest release](https://github.com/PatchTray/PatchTray/releases/latest)
 - [Getting started guide](https://patchtray.io/guide)
 - [Refund policy](https://patchtray.io/refunds)
 - [Privacy policy](https://patchtray.io/privacy)
