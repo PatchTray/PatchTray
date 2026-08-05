@@ -9,10 +9,10 @@ This directory contains the approved public media kit for PatchTray.
 | `patchtray-banner.png` | Repository README header banner |
 | `patchtray-pro-banner.png` | PatchTray Pro marketing artwork |
 | `patchtray-first-run.png` | First-launch configuration screen |
-| `patchtray-setup.png` | Guided ASIO driver setup |
+| `patchtray-setup.png` | Guided audio-device setup |
 | `patchtray-tutorial.png` | Interactive routing tutorial |
-| `patchtray-canvas.png` | Active ASIO → VST3 → ASIO routing canvas |
-| `patchtray-ports.png` | ASIO input channel configuration |
+| `patchtray-canvas.png` | Active device input → VST3 → device output routing canvas |
+| `patchtray-ports.png` | Device input-channel configuration |
 | `patchtray-license.png` | Pro license status and recovery controls |
 
 ## Usage

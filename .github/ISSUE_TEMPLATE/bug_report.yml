@@ -67,11 +67,11 @@ body:
       required: true
 
   - type: input
-    id: asio
+    id: audio-device
     attributes:
-      label: ASIO driver and audio setup
-      description: Name the driver and relevant mixer or interface.
-      placeholder: Voicemeeter Potato Insert Virtual ASIO
+      label: Audio device and setup
+      description: Name the backend, driver, and relevant mixer or interface.
+      placeholder: Focusrite USB ASIO, Windows Audio, or Voicemeeter Insert
     validations:
       required: true
 

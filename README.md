@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/patchtray-banner.png" alt="PatchTray — visual ASIO routing and VST3 hosting" width="760">
+  <img src="assets/patchtray-banner.png" alt="PatchTray — a visual VST3 host for live audio" width="760">
 </p>
 
 <p align="center">
@@ -20,13 +20,13 @@
 
 # PatchTray
 
-PatchTray is a low-latency Windows VST3 host for building visible, real-time ASIO audio routes. Connect an ASIO input, place your plugins on the graph, route them to an ASIO output, and keep the chain running from the system tray.
+PatchTray is a visual VST3 host for live audio. Connect a compatible duplex audio device, place your plugins on the graph, route the processed signal back to selected device channels, and keep the chain running from the system tray. VoiceMeeter Patch Inserts provide an expanded multichannel workflow but are not required.
 
 This is PatchTray's public release and community repository. The application source and service infrastructure are maintained privately; this repository contains downloadable builds, updater metadata, approved media assets, and public issue tracking.
 
 ## What it does
 
-- Routes live audio through a visual ASIO → VST3 → ASIO graph.
+- Routes live audio through a visual device input → VST3 → device output graph.
 - Hosts VST3 effects with native plugin editors and on-node parameter controls.
 - Shows master meters, graph state, and real-time processing telemetry.
 - Saves reusable presets and keeps processing while minimized to the tray.
@@ -34,7 +34,7 @@ This is PatchTray's public release and community repository. The application sou
 - Offers PatchTray Pro with unlimited nodes and presets.
 
 <p align="center">
-  <img src="assets/patchtray-canvas.png" alt="PatchTray canvas routing an ASIO input through a VST3 plugin to an ASIO output" width="900">
+  <img src="assets/patchtray-canvas.png" alt="PatchTray canvas routing a live device input through a VST3 plugin to a device output" width="900">
 </p>
 
 <details>
@@ -44,17 +44,17 @@ This is PatchTray's public release and community repository. The application sou
 
 <img src="assets/patchtray-first-run.png" alt="PatchTray first-launch configuration screen" width="900">
 
-### Guided ASIO setup
+### Guided audio-device setup
 
-<img src="assets/patchtray-setup.png" alt="PatchTray guided setup selecting an ASIO audio driver" width="900">
+<img src="assets/patchtray-setup.png" alt="PatchTray guided setup selecting a compatible audio device" width="900">
 
 ### Interactive routing tutorial
 
 <img src="assets/patchtray-tutorial.png" alt="PatchTray routing canvas with the interactive tutorial coach" width="900">
 
-### ASIO port configuration
+### Device-channel configuration
 
-<img src="assets/patchtray-ports.png" alt="PatchTray ASIO input channel configuration" width="900">
+<img src="assets/patchtray-ports.png" alt="PatchTray input-channel configuration" width="900">
 
 ### License management and recovery
 
@@ -78,10 +78,10 @@ PatchTray is currently distributed as an unsigned public beta. Windows may displ
 ## Requirements
 
 - Windows 10 or Windows 11, 64-bit;
-- an installed ASIO driver and compatible audio path; and
+- a compatible duplex device exposed through ASIO, Windows Audio, or DirectSound; and
 - one or more 64-bit VST3 plugins for processing.
 
-PatchTray is commonly used with Voicemeeter ASIO insert routing, but other suitable ASIO configurations can work.
+VoiceMeeter Patch Inserts are supported when a larger multichannel routing surface is useful, but PatchTray can also work directly with compatible hardware and virtual audio devices.
 
 ## Issues and feature requests
 
